@@ -86,13 +86,15 @@ public class GroceryItem {
         return false;
     }
 
+    /**
+     * Function that purchases an amount `count` of an item.
+     *
+     * @param int count, count of items to purchase
+     * @return boolean succesful purchase
+     */
     public boolean purchase(int count) {
-        System.out.println("***pruchase");
-        System.out.println(" items = " + this.items + " amount = " + count);
         if (this.items >= count) {
-            System.out.println("can buy");
             this.items = this.items - count;
-            System.out.println("items after purchase = " + this.items);
             return true;
         }
         return false;

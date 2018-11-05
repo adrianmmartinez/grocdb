@@ -1,5 +1,9 @@
 package edu.csumb8.grocdb;
 
+/**
+ * Used to add or delete items from the db
+ */
+
 import edu.csumb8.grocdb.entitites.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -34,9 +38,12 @@ public class GroceryDbSeeder implements CommandLineRunner {
                 "these are napkins", "Essentials", 35);
         GroceryItem coffee = new GroceryItem(null, "Coffee Beans", "$9.99",
                 "this is coffee beans", "Coffee", 35);
-        grocRepo.deleteAll();
-        List<GroceryItem> groceries = Arrays.asList(banana, pb, oj, stringCheese, bread, tritip, napkins);
 
+        // Delete any existing items from db.
+        grocRepo.deleteAll();
+
+        // Add items to the db.
+        List<GroceryItem> groceries = Arrays.asList(banana, pb, oj, stringCheese, bread, tritip, napkins);
         grocRepo.saveAll(groceries);
 
     }
