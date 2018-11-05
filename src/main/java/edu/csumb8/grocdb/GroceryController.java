@@ -4,6 +4,7 @@ import edu.csumb8.grocdb.entitites.GroceryItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -54,22 +55,32 @@ public class GroceryController {
     @PostMapping("/purchase")
     public boolean purchase(@RequestParam String [] ids) {
         List<GroceryItem> cart = new ArrayList<>();
+        HashMap<String, GroceryItem> groceryItems = new HashMap<>();
         for (int i = 0; i<ids.length; i++) {
-            System.out.println(ids[i]);
+            GroceryItem item;
             String id = ids[i];
-            GroceryItem item = grocRepo.findByRepoId(id);
-            if (item == null) {
-                System.out.println("error: cant find item with id = " + id);
-                return false;
+            System.out.println(ids[i]);
+            if (groceryItems.containsKey(id)) {
+                item = groceryItems.get(id);
             }
+            else {
+                item = grocRepo.findByRepoId(id);
+                groceryItems.put(id, item);
+                if (item == null) {
+                    System.out.println("error: cant find item with id = " + id);
+                    return false;
+                }
+            }
+
             if (!item.available(1)) {
                 return false;
             }
             else {
                 item.purchase(1);
-                grocRepo.save(item);
+                cart.add(item);
             }
         }
+        grocRepo.saveAll(cart);
         return true;
     }
 }
