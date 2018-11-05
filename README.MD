@@ -1,3 +1,4 @@
 ## **grocdb** - grocery database
 
-#### run with: `mvn spring-boot:run`
+#### run mongo with: `mongod`
+#### run db with: `mvn spring-boot:run`
