@@ -7,14 +7,14 @@ public class GroceryItem {
 
     private String id;
     private String name;
-    private String price;
+    private int price;
     private String desc;
     private String type;
     private String img;
     private int items;
 
 
-    public GroceryItem(String id, String name, String price, String desc, String type, int items) {
+    public GroceryItem(String id, String name, int price, String desc, String type, int items) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -39,11 +39,11 @@ public class GroceryItem {
         this.name = name;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

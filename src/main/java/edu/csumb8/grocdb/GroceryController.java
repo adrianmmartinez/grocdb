@@ -17,6 +17,7 @@ public class GroceryController {
      * @route /getAll
      * @return A list of existing groceries in the db
      */
+    @CrossOrigin()
     @GetMapping("/getAll")
     public List<GroceryItem> getAll() {
         List<GroceryItem> result = grocRepo.findAll();
@@ -28,6 +29,7 @@ public class GroceryController {
      * @param String id of item
      * @return GroceryItem item with matching id
      */
+    @CrossOrigin()
     @GetMapping("/id/{id}")
     public GroceryItem getItemById(@PathVariable String id) {
         GroceryItem item = grocRepo.findByRepoId(id);
@@ -40,6 +42,7 @@ public class GroceryController {
      * @param String amount of item to purchase
      * @return boolean availability
      */
+    @CrossOrigin()
     @GetMapping("/available/{id}/{amount}")
     public boolean checkAvailability(@PathVariable String id, @PathVariable int amount) {
         GroceryItem item = grocRepo.findByRepoId(id);
@@ -52,6 +55,7 @@ public class GroceryController {
      * @param String [] ids
      * @return boolean on succesful purchase
      */
+    @CrossOrigin()
     @PostMapping("/purchase")
     public boolean purchase(@RequestParam String [] ids) {
         List<GroceryItem> cart = new ArrayList<>();
