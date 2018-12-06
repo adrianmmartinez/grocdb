@@ -23,27 +23,25 @@ public class GroceryDbSeeder implements CommandLineRunner {
 
         // Make Groceries here.
         GroceryItem banana = new GroceryItem(null, "Banana", 1,
-                "this is a banana", "produce", 35);
+                "A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.", "produce", 35);
         GroceryItem pb = new GroceryItem(null, "Peanut Butter", 2,
-                "this is a banana", "produce", 35);
+                "Peanut butter is a food paste or spread made from ground dry-roasted peanuts. It often contains additional ingredients that modify the taste or texture, such as salt, sweeteners, or emulsifiers.", "produce", 35);
         GroceryItem oj = new GroceryItem(null, "Orange Juice", 4,
-                "this is orange juice", "Beverage", 35);
+                "Orange juice is a liquid extract of the orange tree fruit, produced by squeezing oranges.", "Beverage", 35);
         GroceryItem stringCheese = new GroceryItem(null, "String Cheese", 3,
-                "this is string cheese", "Dairy", 35);
+                "String cheese -- snack-sized servings of low-moisture mozzarella.", "Dairy", 35);
         GroceryItem bread = new GroceryItem(null, "Bread", 2,
-                "this is bread", "Baked-Goods", 35);
+                "Bread is a staple food prepared from a dough of flour and water, usually by baking.", "Baked-Goods", 35);
         GroceryItem tritip = new GroceryItem(null, "Tri-tip", 18,
-                "this is tri-tip", "Meat", 35);
-        GroceryItem napkins = new GroceryItem(null, "Napkins", 2,
-                "these are napkins", "Essentials", 35);
+                "Tri-tip steak is cut from a tri-tip roast, which is a small, triangular cut from the sirloin. ", "Meat", 35);
         GroceryItem coffee = new GroceryItem(null, "Coffee Beans", 9,
-                "this is coffee beans", "Coffee", 35);
+                "Coffee Contains Caffeine, a Stimulant That Can Enhance Brain Function and Boost Metabolism", "Coffee", 35);
 
         // Delete any existing items from db.
         grocRepo.deleteAll();
 
         // Add items to the db.
-        List<GroceryItem> groceries = Arrays.asList(banana, pb, oj, stringCheese, bread, tritip, napkins);
+        List<GroceryItem> groceries = Arrays.asList(banana, pb, oj, stringCheese, bread, tritip, coffee);
         grocRepo.saveAll(groceries);
 
     }
